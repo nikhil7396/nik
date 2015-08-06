@@ -1,5 +1,5 @@
  <?php
-$from='online@nikhilkulkarni.info';
+$from=$_REQUEST['from'];
 $to=$_REQUEST['to'];
 $subject=$_REQUEST['subject'];
 $description=$_REQUEST['description'];
@@ -27,12 +27,12 @@ $result = $mgClient->sendMessage("$domain",
 //{
 /*-------------------------------------------Sendgrid--------------------------------------------*/
 $url = 'https://api.sendgrid.com/';
-$user = 'online@nikhilkulkarni.info';
-$pass = 'iasreaw476re856r';
+$user = 'USER';
+$pass = 'password';
 
 $params = array(
-    'api_user'  => 'online@nikhilkulkarni.info',
-    'api_key'   => 'iasreaw476re856r',
+    'api_user'  => $user,
+    'api_key'   => $pass,
     'to'        => $to,
     'subject'   => $subject,
     'html'      => $description,
@@ -76,10 +76,10 @@ $mail = new PHPMailer();
 $mail->IsSMTP();                                      // set mailer to use SMTP
 $mail->SMTPAuth = true;     // turn on SMTP authentication
 $mail->SMTPSecure = "tls";
-$mail->Host = "nikhilkulkarni.info";  // specify main and backup server
+$mail->Host = "localhost";  // specify main and backup server
 $mail->Port = 25;
-$mail->Username = "online@nikhilkulkarni.info";  // SMTP username
-$mail->Password = "iasreaw476re856r"; // SMTP password
+$mail->Username = $Username;  // SMTP username
+$mail->Password = $pass; // SMTP password
 
 $mail->From = $from;
 $mail->FromName = $from;
@@ -115,7 +115,7 @@ body {
 </style>
 <?php
 $date = date('Y-m-d H:i:s');
-$link = mysql_connect('localhost','nikhilkulkarni','F^OhaoJKBM.J','nikhilkulkarni'); 
+$link = mysql_connect('localhost','email_service',''); 
 if (!$link) { 
 	die('Could not connect to MySQL: ' . mysqli_error()); 
 } 
